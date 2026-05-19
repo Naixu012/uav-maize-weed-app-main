@@ -1,0 +1,1215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1280</width>
+    <height>860</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Phân tích Sinh trưởng Cây trồng UAV</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QHBoxLayout" name="layoutRoot">
+    <property name="spacing">
+     <number>12</number>
+    </property>
+    <property name="leftMargin">
+     <number>12</number>
+    </property>
+    <property name="topMargin">
+     <number>12</number>
+    </property>
+    <property name="rightMargin">
+     <number>12</number>
+    </property>
+    <property name="bottomMargin">
+     <number>12</number>
+    </property>
+
+    <!-- ══════════════ PANEL TRÁI ══════════════ -->
+    <item>
+     <widget class="QWidget" name="panelLeft">
+      <property name="minimumWidth">
+       <number>280</number>
+      </property>
+      <property name="maximumWidth">
+       <number>310</number>
+      </property>
+      <layout class="QVBoxLayout" name="layoutLeftOuter">
+       <property name="spacing">
+        <number>0</number>
+       </property>
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
+        <number>0</number>
+       </property>
+       <item>
+        <widget class="QScrollArea" name="sidebarScroll">
+         <property name="widgetResizable">
+          <bool>true</bool>
+         </property>
+         <property name="frameShape">
+          <enum>QFrame::NoFrame</enum>
+         </property>
+         <widget class="QWidget" name="sidebarContent">
+          <layout class="QVBoxLayout" name="sidebarLayout">
+           <property name="spacing">
+            <number>8</number>
+           </property>
+           <property name="leftMargin">
+            <number>0</number>
+           </property>
+           <property name="topMargin">
+            <number>0</number>
+           </property>
+           <property name="rightMargin">
+            <number>0</number>
+           </property>
+           <property name="bottomMargin">
+            <number>0</number>
+           </property>
+
+           <!-- Brand -->
+           <item>
+            <widget class="QWidget" name="sidebarBrand" native="true">
+             <property name="minimumHeight">
+              <number>58</number>
+             </property>
+             <layout class="QVBoxLayout" name="brand_layout">
+              <property name="spacing">
+               <number>2</number>
+              </property>
+              <property name="leftMargin">
+               <number>16</number>
+              </property>
+              <property name="topMargin">
+               <number>10</number>
+              </property>
+              <property name="rightMargin">
+               <number>16</number>
+              </property>
+              <property name="bottomMargin">
+               <number>10</number>
+              </property>
+              <item>
+               <widget class="QLabel" name="brandTitle">
+                <property name="text">
+                 <string>UAV Crop Analytics</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="brandSubtitle">
+                <property name="text">
+                 <string>Phân tích cây trồng từ ảnh UAV</string>
+                </property>
+                <property name="wordWrap">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+
+           <!-- GroupBox: Đầu vào -->
+           <item>
+            <widget class="QGroupBox" name="grpInput">
+             <property name="title">
+              <string>Đầu vào</string>
+             </property>
+             <property name="minimumHeight">
+              <number>145</number>
+             </property>
+             <layout class="QVBoxLayout" name="layoutInput">
+              <property name="spacing">
+               <number>4</number>
+              </property>
+              <property name="leftMargin">
+               <number>14</number>
+              </property>
+              <property name="topMargin">
+               <number>16</number>
+              </property>
+              <property name="rightMargin">
+               <number>14</number>
+              </property>
+              <property name="bottomMargin">
+               <number>10</number>
+              </property>
+              <item>
+               <widget class="QPushButton" name="btnChonAnh">
+                <property name="minimumHeight">
+                 <number>30</number>
+                </property>
+                <property name="toolTip">
+                 <string>Chọn một ảnh UAV để phân tích</string>
+                </property>
+                <property name="text">
+                 <string>Chọn 1 ảnh...</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="btnChonThuMuc">
+                <property name="minimumHeight">
+                 <number>30</number>
+                </property>
+                <property name="toolTip">
+                 <string>Chọn thư mục chứa ảnh UAV (.jpg/.png/.tif)</string>
+                </property>
+                <property name="text">
+                 <string>Chọn thư mục ảnh...</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="lblThuMuc">
+                <property name="minimumHeight">
+                 <number>17</number>
+                </property>
+                <property name="text">
+                 <string>Chưa chọn thư mục</string>
+                </property>
+                <property name="wordWrap">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="btnChonModel">
+                <property name="minimumHeight">
+                 <number>30</number>
+                </property>
+                <property name="toolTip">
+                 <string>Chọn file model YOLOv8-seg đã train</string>
+                </property>
+                <property name="text">
+                 <string>Đổi file model (.pt)...</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="lblModel">
+                <property name="minimumHeight">
+                 <number>17</number>
+                </property>
+                <property name="text">
+                 <string>Model: best.pt</string>
+                </property>
+                <property name="wordWrap">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+
+           <!-- GroupBox: Cấu hình phân tích -->
+           <item>
+            <widget class="QGroupBox" name="grpConfig">
+             <property name="title">
+              <string>Cấu hình phân tích</string>
+             </property>
+             <property name="minimumHeight">
+              <number>130</number>
+             </property>
+             <layout class="QGridLayout" name="cfgLayout">
+              <property name="horizontalSpacing">
+               <number>8</number>
+              </property>
+              <property name="verticalSpacing">
+               <number>2</number>
+              </property>
+              <property name="leftMargin">
+               <number>14</number>
+              </property>
+              <property name="topMargin">
+               <number>16</number>
+              </property>
+              <property name="rightMargin">
+               <number>14</number>
+              </property>
+              <property name="bottomMargin">
+               <number>10</number>
+              </property>
+              <item row="0" column="0">
+               <widget class="QLabel" name="lblGSD">
+                <property name="text">
+                 <string>GSD</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="QDoubleSpinBox" name="spinGSD">
+                <property name="decimals">
+                 <number>3</number>
+                </property>
+                <property name="minimum">
+                 <double>0.01</double>
+                </property>
+                <property name="maximum">
+                 <double>20.0</double>
+                </property>
+                <property name="singleStep">
+                 <double>0.01</double>
+                </property>
+                <property name="value">
+                 <double>0.148</double>
+                </property>
+                <property name="suffix">
+                 <string> cm/px</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="0">
+               <widget class="QLabel" name="lblConf">
+                <property name="text">
+                 <string>Conf</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="1">
+               <widget class="QDoubleSpinBox" name="spinConf">
+                <property name="decimals">
+                 <number>2</number>
+                </property>
+                <property name="minimum">
+                 <double>0.01</double>
+                </property>
+                <property name="maximum">
+                 <double>0.99</double>
+                </property>
+                <property name="singleStep">
+                 <double>0.05</double>
+                </property>
+                <property name="value">
+                 <double>0.25</double>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="0">
+               <widget class="QLabel" name="lblIou">
+                <property name="text">
+                 <string>IoU</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="1">
+               <widget class="QDoubleSpinBox" name="spinIou">
+                <property name="decimals">
+                 <number>2</number>
+                </property>
+                <property name="minimum">
+                 <double>0.01</double>
+                </property>
+                <property name="maximum">
+                 <double>0.99</double>
+                </property>
+                <property name="singleStep">
+                 <double>0.05</double>
+                </property>
+                <property name="value">
+                 <double>0.45</double>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="0">
+               <widget class="QLabel" name="lblWeedThresh">
+                <property name="text">
+                 <string>Ngưỡng cỏ</string>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="1">
+               <widget class="QDoubleSpinBox" name="spinWeedThreshold">
+                <property name="decimals">
+                 <number>2</number>
+                </property>
+                <property name="minimum">
+                 <double>0.01</double>
+                </property>
+                <property name="maximum">
+                 <double>0.95</double>
+                </property>
+                <property name="singleStep">
+                 <double>0.05</double>
+                </property>
+                <property name="value">
+                 <double>0.35</double>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="0">
+               <widget class="QLabel" name="lblGrid">
+                <property name="text">
+                 <string>Lưới</string>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="1">
+               <widget class="QSpinBox" name="spinGrid">
+                <property name="minimum">
+                 <number>2</number>
+                </property>
+                <property name="maximum">
+                 <number>12</number>
+                </property>
+                <property name="value">
+                 <number>4</number>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+
+           <!-- Nút Bắt đầu quét AI -->
+           <item>
+            <widget class="QPushButton" name="btnBatDau">
+             <property name="minimumHeight">
+              <number>38</number>
+             </property>
+             <property name="toolTip">
+              <string>Chạy mô hình AI phân tích toàn bộ ảnh trong thư mục</string>
+             </property>
+             <property name="text">
+              <string>Bắt đầu quét AI</string>
+             </property>
+            </widget>
+           </item>
+
+           <!-- Progress -->
+           <item>
+            <widget class="QProgressBar" name="progressBar">
+             <property name="minimumHeight">
+              <number>16</number>
+             </property>
+             <property name="value">
+              <number>0</number>
+             </property>
+             <property name="textVisible">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="lblTrangThai">
+             <property name="text">
+              <string>Sẵn sàng</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+
+           <!-- GroupBox: Hiển thị -->
+           <item>
+            <widget class="QGroupBox" name="grpHienThi">
+             <property name="title">
+              <string>Chế độ hiển thị</string>
+             </property>
+             <property name="minimumHeight">
+              <number>100</number>
+             </property>
+             <layout class="QVBoxLayout" name="layoutHienThi">
+              <property name="spacing">
+               <number>4</number>
+              </property>
+              <property name="leftMargin">
+               <number>14</number>
+              </property>
+              <property name="topMargin">
+               <number>16</number>
+              </property>
+              <property name="rightMargin">
+               <number>14</number>
+              </property>
+              <property name="bottomMargin">
+               <number>10</number>
+              </property>
+              <item>
+               <widget class="QComboBox" name="cmbViewMode">
+                <item>
+                 <property name="text">
+                  <string>Ảnh gốc</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Mask cây</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Mask cỏ</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Overlay</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Heatmap cỏ</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Vùng cảnh báo</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="lblDoDam">
+                <property name="minimumHeight">
+                 <number>17</number>
+                 </property>
+                <property name="text">
+                 <string>Độ đậm mask: 50%</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QSlider" name="sliderAlpha">
+                <property name="minimumHeight">
+                 <number>20</number>
+                </property>
+                <property name="minimum">
+                 <number>10</number>
+                </property>
+                <property name="maximum">
+                 <number>90</number>
+                </property>
+                <property name="value">
+                 <number>50</number>
+                </property>
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="tickPosition">
+                 <enum>QSlider::TicksBelow</enum>
+                </property>
+                <property name="tickInterval">
+                 <number>10</number>
+                </property>
+                <property name="toolTip">
+                 <string>Điều chỉnh độ trong suốt của lớp màu AI</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+
+           <!-- GroupBox: Điều hướng ảnh -->
+           <item>
+            <widget class="QGroupBox" name="grpDieuHuong">
+             <property name="title">
+              <string>Điều hướng ảnh</string>
+             </property>
+             <property name="minimumHeight">
+              <number>76</number>
+             </property>
+             <layout class="QHBoxLayout" name="layoutDieuHuong">
+              <property name="spacing">
+               <number>8</number>
+              </property>
+              <property name="leftMargin">
+               <number>14</number>
+              </property>
+              <property name="topMargin">
+               <number>16</number>
+              </property>
+              <property name="rightMargin">
+               <number>14</number>
+              </property>
+              <property name="bottomMargin">
+               <number>10</number>
+              </property>
+              <item>
+               <widget class="QPushButton" name="btnTruoc">
+                <property name="minimumHeight">
+                 <number>30</number>
+                </property>
+                <property name="toolTip">
+                 <string>Ảnh trước</string>
+                </property>
+                <property name="text">
+                 <string>Trước</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="lblSoAnh">
+                <property name="text">
+                 <string>—</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="btnSau">
+                <property name="minimumHeight">
+                 <number>30</number>
+                </property>
+                <property name="toolTip">
+                 <string>Ảnh tiếp theo</string>
+                </property>
+                <property name="text">
+                 <string>Sau</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+
+           <!-- Xuất kết quả -->
+           <item>
+            <widget class="QPushButton" name="btnXuatCSV">
+             <property name="minimumHeight">
+              <number>30</number>
+             </property>
+             <property name="toolTip">
+              <string>Lưu toàn bộ chỉ số phân tích ra file CSV</string>
+             </property>
+             <property name="text">
+              <string>Xuất CSV kết quả</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="btnLuuAnh">
+             <property name="minimumHeight">
+              <number>30</number>
+             </property>
+             <property name="toolTip">
+              <string>Lưu ảnh kết quả AI hiện tại ra file PNG</string>
+             </property>
+             <property name="text">
+              <string>Lưu ảnh overlay</string>
+             </property>
+            </widget>
+           </item>
+
+           <!-- Spacer dưới cùng -->
+           <item>
+            <spacer name="spacerLeft">
+             <property name="orientation">
+              <enum>Qt::Vertical</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>20</width>
+               <height>40</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+
+          </layout>
+         </widget>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+
+    <!-- ══════════════ PANEL PHẢI ══════════════ -->
+    <item>
+     <widget class="QWidget" name="panelRight">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <layout class="QVBoxLayout" name="layoutRight">
+       <property name="spacing">
+        <number>10</number>
+       </property>
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
+        <number>0</number>
+       </property>
+
+       <!-- Header Row -->
+       <item>
+        <widget class="QWidget" name="panelHeader" native="true">
+         <property name="minimumHeight">
+          <number>58</number>
+         </property>
+         <layout class="QHBoxLayout" name="header_layout">
+          <property name="spacing">
+           <number>12</number>
+          </property>
+          <property name="leftMargin">
+           <number>20</number>
+          </property>
+          <property name="topMargin">
+           <number>10</number>
+          </property>
+          <property name="rightMargin">
+           <number>20</number>
+          </property>
+          <property name="bottomMargin">
+           <number>10</number>
+          </property>
+          <item>
+           <widget class="QWidget" name="headerTitleBox" native="true">
+            <layout class="QVBoxLayout" name="title_layout">
+             <property name="spacing">
+              <number>4</number>
+             </property>
+             <property name="leftMargin">
+              <number>0</number>
+             </property>
+             <property name="topMargin">
+              <number>0</number>
+             </property>
+             <property name="rightMargin">
+              <number>0</number>
+             </property>
+             <property name="bottomMargin">
+              <number>0</number>
+             </property>
+             <item>
+              <widget class="QLabel" name="headerTitle">
+               <property name="text">
+                <string>Dashboard phân tích sinh trưởng</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="headerMeta">
+               <property name="text">
+                <string></string>
+               </property>
+               <property name="wordWrap">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item alignment="Qt::AlignRight|Qt::AlignVCenter">
+           <widget class="QPushButton" name="btnTheme">
+            <property name="minimumHeight">
+             <number>32</number>
+            </property>
+            <property name="toolTip">
+             <string>Chuyển đổi giao diện sáng/tối</string>
+            </property>
+            <property name="text">
+             <string>Chế độ sáng</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+
+       <!-- KPI Row -->
+       <item>
+        <widget class="QWidget" name="kpiRow" native="true">
+         <property name="maximumHeight">
+          <number>78</number>
+         </property>
+         <layout class="QHBoxLayout" name="kpi_layout">
+          <property name="spacing">
+           <number>12</number>
+          </property>
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <property name="bottomMargin">
+           <number>0</number>
+          </property>
+          <!-- KPI 1 -->
+          <item>
+           <widget class="QWidget" name="kpiCard_images" native="true">
+            <property name="minimumHeight">
+             <number>72</number>
+            </property>
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <layout class="QVBoxLayout" name="kpiLayout_1">
+             <property name="spacing">
+              <number>2</number>
+             </property>
+             <property name="leftMargin">
+              <number>16</number>
+             </property>
+             <property name="topMargin">
+              <number>10</number>
+             </property>
+             <property name="rightMargin">
+              <number>16</number>
+             </property>
+             <property name="bottomMargin">
+              <number>10</number>
+             </property>
+             <item>
+              <widget class="QLabel" name="kpiLabel_images">
+               <property name="text">
+                <string>Ảnh gốc</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="kpiValue_images">
+               <property name="text">
+                <string>0</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignLeft|Qt::AlignVCenter</set>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <!-- KPI 2 -->
+          <item>
+           <widget class="QWidget" name="kpiCard_tiles" native="true">
+            <property name="minimumHeight">
+             <number>72</number>
+            </property>
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <layout class="QVBoxLayout" name="kpiLayout_2">
+             <property name="spacing">
+              <number>2</number>
+             </property>
+             <property name="leftMargin">
+              <number>16</number>
+             </property>
+             <property name="topMargin">
+              <number>10</number>
+             </property>
+             <property name="rightMargin">
+              <number>16</number>
+             </property>
+             <property name="bottomMargin">
+              <number>10</number>
+             </property>
+             <item>
+              <widget class="QLabel" name="kpiLabel_tiles">
+               <property name="text">
+                <string>Kết quả</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="kpiValue_tiles">
+               <property name="text">
+                <string>0</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignLeft|Qt::AlignVCenter</set>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <!-- KPI 3 -->
+          <item>
+           <widget class="QWidget" name="kpiCard_crop" native="true">
+            <property name="minimumHeight">
+             <number>72</number>
+            </property>
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <layout class="QVBoxLayout" name="kpiLayout_3">
+             <property name="spacing">
+              <number>2</number>
+             </property>
+             <property name="leftMargin">
+              <number>16</number>
+             </property>
+             <property name="topMargin">
+              <number>10</number>
+             </property>
+             <property name="rightMargin">
+              <number>16</number>
+             </property>
+             <property name="bottomMargin">
+              <number>10</number>
+             </property>
+             <item>
+              <widget class="QLabel" name="kpiLabel_crop">
+               <property name="text">
+                <string>Cây ngô</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="kpiValue_crop">
+               <property name="text">
+                <string>0</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignLeft|Qt::AlignVCenter</set>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <!-- KPI 4 -->
+          <item>
+           <widget class="QWidget" name="kpiCard_weed" native="true">
+            <property name="minimumHeight">
+             <number>72</number>
+            </property>
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <layout class="QVBoxLayout" name="kpiLayout_4">
+             <property name="spacing">
+              <number>2</number>
+             </property>
+             <property name="leftMargin">
+              <number>16</number>
+             </property>
+             <property name="topMargin">
+              <number>10</number>
+             </property>
+             <property name="rightMargin">
+              <number>16</number>
+             </property>
+             <property name="bottomMargin">
+              <number>10</number>
+             </property>
+             <item>
+              <widget class="QLabel" name="kpiLabel_weed">
+               <property name="text">
+                <string>Phủ cỏ</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="kpiValue_weed">
+               <property name="text">
+                <string>0.0%</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignLeft|Qt::AlignVCenter</set>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+
+       <!-- Splitter -->
+       <item>
+        <widget class="QSplitter" name="splitterRight">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+
+         <widget class="QLabel" name="lblAnh">
+          <property name="text">
+           <string>Chưa có ảnh — Chọn thư mục và nhấn Bắt đầu quét AI</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+          <property name="minimumHeight">
+           <number>250</number>
+          </property>
+          <property name="scaledContents">
+           <bool>false</bool>
+          </property>
+         </widget>
+
+         <widget class="QGroupBox" name="grpBang">
+          <property name="title">
+           <string>Chỉ số Crop / Weed</string>
+          </property>
+          <property name="minimumHeight">
+           <number>210</number>
+          </property>
+          <layout class="QVBoxLayout" name="layoutBang">
+           <property name="spacing">
+            <number>8</number>
+           </property>
+           <property name="leftMargin">
+            <number>12</number>
+           </property>
+           <property name="topMargin">
+            <number>18</number>
+           </property>
+           <property name="rightMargin">
+            <number>12</number>
+           </property>
+           <property name="bottomMargin">
+            <number>12</number>
+           </property>
+           <item>
+            <layout class="QHBoxLayout" name="metrics_layout">
+             <property name="spacing">
+              <number>12</number>
+             </property>
+             <item>
+              <widget class="QWidget" name="metricPanel_crop" native="true">
+               <layout class="QVBoxLayout" name="layout_crop_panel">
+                <property name="spacing">
+                 <number>6</number>
+                </property>
+                <property name="leftMargin">
+                 <number>0</number>
+                </property>
+                <property name="topMargin">
+                 <number>0</number>
+                </property>
+                <property name="rightMargin">
+                 <number>0</number>
+                </property>
+                <property name="bottomMargin">
+                 <number>0</number>
+                </property>
+                <item>
+                 <widget class="QLabel" name="metricTitle_crop">
+                  <property name="text">
+                   <string>Crop</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QTableWidget" name="bangChiSo">
+                  <property name="minimumHeight">
+                   <number>150</number>
+                  </property>
+                  <property name="editTriggers">
+                   <set>QAbstractItemView::NoEditTriggers</set>
+                  </property>
+                  <property name="selectionBehavior">
+                   <enum>QAbstractItemView::SelectRows</enum>
+                  </property>
+                  <property name="alternatingRowColors">
+                   <bool>true</bool>
+                  </property>
+                  <property name="columnCount">
+                   <number>2</number>
+                  </property>
+                  <attribute name="horizontalHeaderStretchLastSection">
+                   <bool>true</bool>
+                  </attribute>
+                  <attribute name="verticalHeaderVisible">
+                   <bool>false</bool>
+                  </attribute>
+                  <column>
+                   <property name="text">
+                    <string>Chỉ số</string>
+                   </property>
+                  </column>
+                  <column>
+                   <property name="text">
+                    <string>Giá trị</string>
+                   </property>
+                  </column>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item>
+              <widget class="QWidget" name="metricPanel_weed" native="true">
+               <layout class="QVBoxLayout" name="layout_weed_panel">
+                <property name="spacing">
+                 <number>6</number>
+                </property>
+                <property name="leftMargin">
+                 <number>0</number>
+                </property>
+                <property name="topMargin">
+                 <number>0</number>
+                </property>
+                <property name="rightMargin">
+                 <number>0</number>
+                </property>
+                <property name="bottomMargin">
+                 <number>0</number>
+                </property>
+                <item>
+                 <widget class="QLabel" name="metricTitle_weed">
+                  <property name="text">
+                   <string>Weed</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QTableWidget" name="tblWeedMetrics">
+                  <property name="minimumHeight">
+                   <number>150</number>
+                  </property>
+                  <property name="editTriggers">
+                   <set>QAbstractItemView::NoEditTriggers</set>
+                  </property>
+                  <property name="selectionBehavior">
+                   <enum>QAbstractItemView::SelectRows</enum>
+                  </property>
+                  <property name="alternatingRowColors">
+                   <bool>true</bool>
+                  </property>
+                  <property name="columnCount">
+                   <number>2</number>
+                  </property>
+                  <attribute name="horizontalHeaderStretchLastSection">
+                   <bool>true</bool>
+                  </attribute>
+                  <attribute name="verticalHeaderVisible">
+                   <bool>false</bool>
+                  </attribute>
+                  <column>
+                   <property name="text">
+                    <string>Chỉ số</string>
+                   </property>
+                  </column>
+                  <column>
+                   <property name="text">
+                    <string>Giá trị</string>
+                   </property>
+                  </column>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </widget>
+        </widget>
+       </item>
+
+      </layout>
+     </widget>
+    </item>
+
+   </layout>
+  </widget>
+
+  <!-- Menu bar -->
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1280</width>
+     <height>26</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <addaction name="actionChonThuMuc"/>
+    <addaction name="actionXuatCSV"/>
+    <addaction name="separator"/>
+    <addaction name="actionThoat"/>
+   </widget>
+   <widget class="QMenu" name="menuHelp">
+    <property name="title">
+     <string>Trợ giúp</string>
+    </property>
+    <addaction name="actionVeChungToi"/>
+   </widget>
+   <addaction name="menuFile"/>
+   <addaction name="menuHelp"/>
+  </widget>
+
+  <!-- Status bar -->
+  <widget class="QStatusBar" name="statusbar"/>
+
+  <!-- Actions -->
+  <action name="actionChonThuMuc">
+   <property name="text">
+    <string>Chọn thư mục ảnh...</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+O</string>
+   </property>
+  </action>
+  <action name="actionXuatCSV">
+   <property name="text">
+    <string>Xuất CSV kết quả</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+S</string>
+   </property>
+  </action>
+  <action name="actionThoat">
+   <property name="text">
+    <string>Thoát</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Q</string>
+   </property>
+  </action>
+  <action name="actionVeChungToi">
+   <property name="text">
+    <string>Về chúng tôi</string>
+   </property>
+  </action>
+
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
